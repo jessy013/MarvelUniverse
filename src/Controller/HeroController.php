@@ -19,7 +19,7 @@ class HeroController extends AbstractController
         ]);
     }
 }
-/**
+ /**
      * @Route("/hero/list", name="liste_hero")
      */
     function _list(HeroService $HeroService): response
@@ -29,8 +29,6 @@ class HeroController extends AbstractController
         [
             'heroList'=>$listeHeros
         ]
-        )
+        );
     }
-
-
 }

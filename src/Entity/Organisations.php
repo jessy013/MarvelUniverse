@@ -3,12 +3,14 @@
 namespace App\Entity;
 
 use App\Repository\OrganisationsRepository;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Mapping as ORM;
+
 
 /**
  * @ORM\Entity(repositoryClass=OrganisationsRepository::class)
  */
-class Organisations
+class Organisations extends ServiceEntityRepository
 {
     /**
      * @ORM\Id
@@ -54,5 +56,11 @@ class Organisations
         $this->city = $city;
 
         return $this;
+    }
+
+    function __construct($pName,$pCity)
+    {
+        $this->name = $pName;
+        $this->city = $pCity;
     }
 }

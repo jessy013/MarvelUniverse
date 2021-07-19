@@ -42,6 +42,11 @@ class Hero
      */
     private $pictures;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $pseudo;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -82,6 +87,17 @@ class Hero
 
         return $this;
     }
+    public function getPseudo(): ?string
+    {
+        return $this->pseudo;
+    }
+
+    public function setPseudo(string $pseudo): self
+    {
+        $this->pseudo = $pseudo;
+
+        return $this;
+    }
 
     public function getDescription(): ?string
     {
@@ -106,4 +122,17 @@ class Hero
 
         return $this;
     }
+
+    function __construct($pfirstNam,$pName,$pIsvilain,$pPseudo,$pDescription,$pPictures)
+    {
+        $this-> firstName = $pfirstNam;
+        $this-> Name = $pName;
+        $this-> IsVilain = $pIsvilain;
+        $this-> pseudo = $pPseudo
+        $this-> description=$pDescription;
+        $this-> pictures = $pPictures;
+
+    }
 }
+
+    

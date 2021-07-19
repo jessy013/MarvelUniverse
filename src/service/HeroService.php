@@ -1,22 +1,24 @@
 <?php
-namespace app\service;
+namespace App\Service;
 
-use app\Entity\Hero;
+use App\Entity\Hero;
 
 class HeroService
 {
-    function __construct()
+    private $_listHero= [];
+    public function __construct()
     {
         
     }
-}
 
-function getlist()
+
+public function getlist()
 {
 
 }
 
-function getHero()
+public function getHero()
 {
-    
+
+}
 }

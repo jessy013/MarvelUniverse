@@ -18,19 +18,14 @@ class Organisations
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=255)
      */
-    private $Name;
+    private $name;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=255)
      */
-    private $City;
-
-    /**
-     * @ORM\Column(type="string", length=20)
-     */
-    private $leader;
+    private $city;
 
     public function getId(): ?int
     {
@@ -39,36 +34,24 @@ class Organisations
 
     public function getName(): ?string
     {
-        return $this->Name;
+        return $this->name;
     }
 
-    public function setName(string $Name): self
+    public function setName(string $name): self
     {
-        $this->Name = $Name;
+        $this->name = $name;
 
         return $this;
     }
 
     public function getCity(): ?string
     {
-        return $this->City;
+        return $this->city;
     }
 
-    public function setCity(string $City): self
+    public function setCity(string $city): self
     {
-        $this->City = $City;
-
-        return $this;
-    }
-
-    public function getLeader(): ?string
-    {
-        return $this->leader;
-    }
-
-    public function setLeader(string $leader): self
-    {
-        $this->leader = $leader;
+        $this->city = $city;
 
         return $this;
     }

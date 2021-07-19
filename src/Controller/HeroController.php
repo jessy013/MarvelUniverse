@@ -19,16 +19,17 @@ class HeroController extends AbstractController
         ]);
     }
 }
- /**
+
+{/**
      * @Route("/hero/list", name="liste_hero")
      */
     function _list(HeroService $HeroService): response
     {
-       $listeHeros =$heroService->getList();
-       return $this->render('hero/list.html.twig',
-        [
+       $listeHeros =$HeroService->getList();
+       return $this->render('hero/list.html.twig',[
+           'controller_name' => 'Herocontroller',
             'heroList'=>$listeHeros
-        ]
-        );
+        ]);
+
     }
 }

@@ -123,13 +123,13 @@ class Hero
         return $this;
     }
 
-    function __construct($pfirstNam,$pName,$pIsvilain,$pPseudo,$pDescription,$pPictures)
+    function __construct($pfirstName,$pName,$pIsvilain,$pPseudo,$pDescriptions,$pPictures)
     {
-        $this-> firstName = $pfirstNam;
+        $this-> firstName = $pfirstName;
         $this-> Name = $pName;
         $this-> IsVilain = $pIsvilain;
-        $this-> pseudo = $pPseudo
-        $this-> description=$pDescription;
+        $this-> pseudo = $pPseudo;
+        $this->description = $pDescriptions;
         $this-> pictures = $pPictures;
 
     }

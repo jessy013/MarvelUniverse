@@ -1,6 +1,7 @@
 <?php
 namespace App\Service;
-use App\Service\Organisation;
+use App\Entity\Organisation;
+
 
 class OrganisationsService
 {

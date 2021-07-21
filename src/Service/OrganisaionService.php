@@ -14,7 +14,7 @@ class OrganisationsService
     }
  public function getlist()
  {
-
+     return $this->_listOrganisation;
  }
 
  public function getOrganisation()

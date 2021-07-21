@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use App\Repository\OrganisationsRepository;
+
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Mapping as ORM;
 

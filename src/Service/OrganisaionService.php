@@ -1,10 +1,11 @@
 <?php
 namespace App\Service;
 use App\Entity\Organisation;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
-
-class OrganisationsService
+class OrganisationsService extends ServiceEntityRepository
 {
+
     private $_listOrganisation= [];
 
     public function __construct()
@@ -18,12 +19,12 @@ class OrganisationsService
      return $this->_listOrganisation;
  }
 
- public function getOrganisation()
+ public function getOrganisation():Organisation
  {
 
  }
 
- public function addOrganisation()
+ public function addOrganisation($pOrganisation)
  {
      array_push($this->_listOrganisation,$pOrganisation);
  }

@@ -1,6 +1,7 @@
 <?php
 namespace App\Service;
 use App\Entity\Organisation;
+use App\Entity\Organisations;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 class OrganisationsService extends ServiceEntityRepository
@@ -10,20 +11,20 @@ class OrganisationsService extends ServiceEntityRepository
 
     public function __construct()
     {
-        $this->addOrganisation(new Organisation('shield',''));
-        $this->addOrganisation(new Organisation('justiceLigue',''));
-        $this->addOrganisation(new Organisation('x-men',''));
+        $this->addOrganisation(new Organisations('shield',''));
+        $this->addOrganisation(new Organisations('justiceLigue',''));
+        $this->addOrganisation(new Organisations('x-men',''));
     }
  public function getlist()
  {
      return $this->_listOrganisation;
  }
-
- public function getOrganisation():Organisation
+/*
+ public function getOrganisation():Organisations
  {
-    return $this ->_listOrganisation = $pOrganisation;
+    return $this ->_listOrganisation;
  }
-
+*/
  public function addOrganisation($pOrganisation)
  {
      array_push($this->_listOrganisation,$pOrganisation);

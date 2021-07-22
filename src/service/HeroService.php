@@ -6,12 +6,12 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class HeroService
 {
-    private $_EntityManager;
+    private $_entityManager;
     private $_listHero= [];
     
     public function __construct(EntityManagerInterface $em)
     {
-        $this->_EntityManager= $em;
+        $this->_entityManager= $em;
         $this->addHero(new hero('steve','rogers',false,'captain america','le premier super hero americain et fondateur des avengers',''));
         $this->addHero(new hero('thor','Odinson',false,'thor','thor dieux du tonners et fils d odin',''));
         $this->addHero(new hero('tony','stark',false,'iron man','le milliardaire a l armure invincible',''));

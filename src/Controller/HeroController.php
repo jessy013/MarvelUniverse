@@ -33,12 +33,7 @@ class HeroController extends AbstractController
     }
     public function newHero():Response
         {
-          return $this->render('hero/créer.html.twig',[
-                'controller_name' => 
-                'Herocontroller',
-                'HeroList'=>$listeHeros
-         ]);
-          
+          return $this->render('hero/créer.html.twig',[]);
         }
 
 }

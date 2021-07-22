@@ -7,7 +7,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 class OrganisationsService extends ServiceEntityRepository
 {
 
-    private $_listOrganisation= [];
+    private $_listOrganisations= [];
 
     public function __construct()
     {
@@ -17,7 +17,7 @@ class OrganisationsService extends ServiceEntityRepository
     }
  public function getlist()
  {
-     return $this->_listOrganisation;
+     return $this->_listOrganisations;
  }
 /*
  public function getOrganisation():Organisations
@@ -25,8 +25,8 @@ class OrganisationsService extends ServiceEntityRepository
     return $this ->_listOrganisation;
  }
 */
- public function addOrganisation($pOrganisation)
+ public function addOrganisation($pOrganisations)
  {
-     array_push($this->_listOrganisation,$pOrganisation);
+     array_push($this->_listOrganisation,$pOrganisations);
  }
 }

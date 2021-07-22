@@ -2,13 +2,16 @@
 namespace App\Service;
 
 use App\Entity\Hero;
+use Doctrine\ORM\EntityManager;
 
 class HeroService
 {
+    private $_entityManager;
     private $_listHero= [];
     
-    public function __construct()
+    public function __construct(EntityManager $entityManager)
     {
+        $this->_entityManager= $
         $this->addHero(new hero('steve','rogers',false,'captain america','le premier super hero americain et fondateur des avengers',''));
         $this->addHero(new hero('thor','Odinson',false,'thor','thor dieux du tonners et fils d odin',''));
         $this->addHero(new hero('tony','stark',false,'iron man','le milliardaire a l armure invincible',''));

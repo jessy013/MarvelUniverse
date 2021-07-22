@@ -15,7 +15,7 @@ class OrganisationController extends AbstractController
     public function index(OrganisationsService $OrganisationsService): Response
     {
         $listOrganisation = $OrganisationsService->getlist(){
-            array()
+            return $this array()
         }
          ->render('organisation/index.html.twig', [
             'controller_name' => 'OrganisationController',

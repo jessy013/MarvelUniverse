@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+
 use App\Service\HeroService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,12 +19,10 @@ class HeroController extends AbstractController
             'controller_name' => 'HeroController',
         ]);
     }
-}
-
-{/**
+/**
      * @Route("/hero/list", name="liste_hero")
      */
-    function _list(HeroService $HeroService): response
+    public function list(HeroService $HeroService): response
     {
        $listeHeros =$HeroService->getList();
        return $this->render('hero/list.html.twig',[
@@ -32,4 +31,14 @@ class HeroController extends AbstractController
         ]);
 
     }
+    public function newHero():Response
+        {
+          return $this->render('hero/créer.html.twig',[
+                'controller_name' => 
+                'Herocontroller',
+                'HeroList'=>$listeHeros
+         ]);
+          
+        }
+
 }

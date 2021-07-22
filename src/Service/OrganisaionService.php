@@ -21,7 +21,7 @@ class OrganisationsService extends ServiceEntityRepository
 
  public function getOrganisation():Organisation
  {
-
+    return $this ->_listOrganisation = $pOrganisation;
  }
 
  public function addOrganisation($pOrganisation)

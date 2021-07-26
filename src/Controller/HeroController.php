@@ -36,8 +36,8 @@ class HeroController extends AbstractController
     }
     public function newHero(Request $request):response
         {
-            $hero = new Hero('','',false,'','','');
-        $form = $this->createFormBuilder($hero)
+            $Hero = new Hero('','',false,'','','');
+        $form = $this->createFormBuilder($Hero)
         ->add('pseudo',TextType::class)
         ->add('firstname',TextType::class)
         ->add('name',TextType::class)
@@ -47,9 +47,9 @@ class HeroController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid())
         {
-            $hero = $form->getData();
-            $heroService->addHero($hero);
-            return $this->render('hero/create_completed.html.twig',['hero'=>$hero]);
+            $Hero = $form->getData();
+            $HeroService->addHero($Hero);
+            return $this->render('hero/create_completed.html.twig',['hero'=>$Hero]);
         }
         else
         return $this->render('hero/creer.html.twig',['formulaire'=>$form->createView()]);
@@ -60,18 +60,18 @@ class HeroController extends AbstractController
  * @Route("hero/{pId}","hero_show")
  */
 
-    public function show($pId, HeroService $heroService):Response
+    public function show($pId, HeroService $HeroService):Response
     {
-        $hero = $heroService->getHero($pId);
-        return $this->render('hero/hero.html.twig',['hero'=>$hero['hero']]);
+        $Hero = $HeroService->getHero($pId);
+        return $this->render('hero/hero.html.twig',['hero'=>$Hero['hero']]);
     }
 
     /**
      * @Route("hero/delete/{pId}","hero_delete")
      */
-    public function delete($pId, HeroService $heroService):Response
+    public function delete($pId, HeroService $HeroService):Response
     {
-        $heroService->deleteHero($pId);
+        $HeroService->deleteHero($pId);
         return $this->render('hero/delete_completed.html.twig');
     }
 

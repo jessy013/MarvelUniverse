@@ -34,7 +34,7 @@ class HeroController extends AbstractController
         ]);
 
     }
-    public function newHero(Request $request):response
+    public function newHero(Request $request, HeroService $heroService):response
         {
             $Hero = new Hero('','',false,'','','');
         $form = $this->createFormBuilder($Hero)
@@ -47,8 +47,8 @@ class HeroController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid())
         {
-            $Hero = $form->getData();
-            $HeroService->addHero($Hero);
+            $hero = $form->getData();
+            $heroService->addHero($hero);
             return $this->render('hero/create_completed.html.twig',['hero'=>$Hero]);
         }
         else

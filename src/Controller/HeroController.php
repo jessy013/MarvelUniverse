@@ -43,8 +43,16 @@ class HeroController extends AbstractController
         ->add('name',TextType::class)
         ->add('save', SubmitType::class, ['label' => 'Créer Hero'])
             ->getForm();
-
-            return $this->render('hero/creer.html.twig',['formulaire'=>$form->createView()]);
+            $request = Request::createFromGlobals();
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $hero = $form->getData();
+            $heroService->addHero($hero);
+            return $this->render('hero/create_completed.html.twig',['hero'=>$hero]);
+        }
+        else
+        return $this->render('hero/creer.html.twig',['formulaire'=>$form->createView()]);
         }
 
     
@@ -63,7 +71,7 @@ class HeroController extends AbstractController
      */
     public function delete($pId, HeroService $heroService):Response
     {
-        $heroService->delHero($pId);
+        $heroService->deleteHero($pId);
         return $this->render('hero/delete_completed.html.twig');
     }
 

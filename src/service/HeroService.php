@@ -51,4 +51,14 @@ public function addHero($pHero)
     $this->_entityManager->persist($pHero);
     $this->_entityManager->flush($pHero);
     }
+
+    public function deleteHero($pId)
+    {
+        $hero = $this->getHero($pId);
+        if ($hero['found']== true)
+        {
+            $this->_entityManager->remove($hero['hero']);
+            $this->_entityManager->flush();
+        }
+    }
 }

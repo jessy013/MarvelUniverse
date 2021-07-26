@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
-
 use App\Service\HeroService;
+use App\Entity\Hero;
+use Doctrine\DBAL\Types\TextType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -33,7 +34,38 @@ class HeroController extends AbstractController
     }
     public function newHero():Response
         {
-          return $this->render('hero/créer.html.twig',[]);
+            $hero = new Hero('Nom','Prénom',false,'Super Nom','Description','');
+            $form = $this->createFormBuilder($hero)
+            ->add('pseudo',TextType::class)
+        ->add('save', SubmitType::class, ['label' => 'Créer Hero'])
+            ->getForm();
+
+            return $this->render('hero/creer.html.twig',[]);
         }
+
+    
+        /**
+ * @Route("hero/{pId}","hero_show")
+ */
+
+    public function show($pId, HeroService $heroService):Response
+    {
+        $hero = $heroService->getHero($pId);
+        return $this->render('hero/hero.html.twig',['hero'=>$hero['hero']]);
+    }
+
+    /**
+     * @Route("hero/delete/{pId}","hero_delete")
+     */
+    public function delete($pId, HeroService $heroService)
+    {
+        $heroService->delHero($pId);
+    $listeHeros =$heroService->getList();
+        return $this->render('hero/list.html.twig',
+        [
+            'heroList'=>$listeHeros
+        ]
+        );
+    }
 
 }

@@ -1,4 +1,3 @@
-
 {% extends 'base.html.twig' %}
 
 {% block title %}Hello HeroController!{% endblock %}
@@ -10,6 +9,9 @@
 </style>
 
 <div class="example-wrapper">
-{{form(formulaire)}}
+<h1>{{hero.getPseudo()}}</h1>
+<p>{{hero.getFirstName()}} {{hero.getName()}}</p>
+<a href="/hero/delete/{{hero.getId()}}"><button type="submit">supprimer</button>
+</a>
 </div>
 {% endblock %}

@@ -52,9 +52,9 @@ public function addHero($pHero)
     $this->_entityManager->flush($pHero);
     }
 
-    public function deleteHero($pId)
+    public function deletehero($pId)
     {
-        $hero = $this->getHero($pId);
+        $hero = $this->gethero($pId);
         if ($hero['found']== true)
         {
             $this->_entityManager->remove($hero['hero']);

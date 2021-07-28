@@ -27,7 +27,7 @@ class HeroController extends AbstractController
      */
     public function list(HeroService $HeroService): response
     {
-       $listeHeros =$HeroService->getList();
+       $listeHeros =$HeroService->getlist();
        return $this->render('hero/list.html.twig',[
            'controller_name' => 'Herocontroller',
             'heroList'=>$listeHeros

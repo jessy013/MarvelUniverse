@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Service;
 
 use App\Entity\Hero;
@@ -7,56 +8,52 @@ use Doctrine\ORM\EntityManagerInterface;
 class HeroService
 {
     private $_entityManager;
-    private $_listHero= [];
-    
+    private $_listHero = [];
+
     public function __construct(EntityManagerInterface $em)
     {
-        $this->_entityManager= $em;
-        $this->addHero(new hero('steve','rogers',false,'captain america','le premier super hero americain et fondateur des avengers',''));
-        $this->addHero(new hero('thor','Odinson',false,'thor','thor dieux du tonners et fils d odin',''));
-        $this->addHero(new hero('tony','stark',false,'iron man','le milliardaire a l armure invincible',''));
-        $this->addHero(new hero('bruce','banner',false,'hulk','hulk le monstre vert déchainer',''));
-        $this->addHero(new hero('natasha','romanoff',false,'black widow','l espionne russe devenue agent du shield',''));
-        $this->addHero(new hero('clinton','barton',false,'Hawkeye','vif et précis rien échapes a son regard',''));
-        
+        $this->_entityManager = $em;
+        $this->addHero(new hero('steve', 'rogers', false, 'captain america', 'le premier super hero americain et fondateur des avengers', ''));
+        $this->addHero(new hero('thor', 'Odinson', false, 'thor', 'thor dieux du tonners et fils d odin', ''));
+        $this->addHero(new hero('tony', 'stark', false, 'iron man', 'le milliardaire a l armure invincible', ''));
+        $this->addHero(new hero('bruce', 'banner', false, 'hulk', 'hulk le monstre vert déchainer', ''));
+        $this->addHero(new hero('natasha', 'romanoff', false, 'black widow', 'l espionne russe devenue agent du shield', ''));
+        $this->addHero(new hero('clinton', 'barton', false, 'Hawkeye', 'vif et précis rien échapes a son regard', ''));
     }
 
 
-public function getlist()
-{
-    return $this->_listHero;
-}
-
-public function getHero($pId)
-{
-    $find = false;
-    $i = 0;
-    while(($i>= count($this->_listHero))||$find == false)
+    public function getlist()
     {
-        if($this->_listHero[$i]->getId()==$pId)
-        {
-            $find = true;
-            $Hero = $this-> _listHero[$i];
-        }
-        $i++;
+        return $this->_listHero;
     }
-    return  ['found'=>$find,'hero'=>$Hero];
-    
 
-}
+    public function getHero($pId)
+    {
+       /* $find = false;
+        $i = 0;
+        while (($i >= count($this->_listHero)) || $find == false) {
+            if ($this->_listHero[$i]->getId() == $pId) {
+                $find = true;
+                $Hero = $this->_listHero[$i];
+            }
+            $i++;
+        }
+        return  ['found' => $find, 'hero' => $Hero];*/
+        $hero = $this->_entityManager->getRepository(Hero::class)->find($pId);
+        return  ['found' => isset($hero), 'hero' => $hero];
+    }
 
-public function addHero($pHero)
-{   
-    array_push($this->_listHero,$pHero);
-    $this->_entityManager->persist($pHero);
-    $this->_entityManager->flush($pHero);
+    public function addHero($pHero)
+    {
+        array_push($this->_listHero, $pHero);
+        $this->_entityManager->persist($pHero);
+        $this->_entityManager->flush($pHero);
     }
 
     public function deleteHero($pId)
     {
         $Hero = $this->getHero($pId);
-        if ($Hero['found']== true)
-        {
+        if ($Hero['found'] == true) {
             $this->_entityManager->remove($Hero['hero']);
             $this->_entityManager->flush();
         }

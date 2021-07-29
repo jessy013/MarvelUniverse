@@ -10,7 +10,7 @@ use app\service\OrganisationsService;
 class OrganisationsController extends AbstractController
 {
     /**
-     * @Route("/organisation", name="organisation")
+     * @Route("/Organisation", name="Organisation")
      */
      public function getlist(OrganisationsService $OrganisationsService): Response 
      {

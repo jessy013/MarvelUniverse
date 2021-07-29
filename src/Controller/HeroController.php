@@ -34,6 +34,9 @@ class HeroController extends AbstractController
             'heroList' => $listeHeros
         ]);
     }
+    /**
+     * @Route("/hero/create", name="create_hero")
+     */
     public function newHero(Request $request, HeroService $heroService): response
     {
         $hero = new Hero('', '', false, '', '', '');

@@ -7,6 +7,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
 class HeroType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -18,8 +20,7 @@ class HeroType extends AbstractType
             ->add('description')
             ->add('pictures')
             ->add('pseudo')
-            ->add('save',SubmitType::class, ['label' => 'create Héro'])
-        ;
+            ->add('save', SubmitType::class, ['label' => 'create Héro']);
     }
 
     public function configureOptions(OptionsResolver $resolver)

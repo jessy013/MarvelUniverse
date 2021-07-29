@@ -13,13 +13,9 @@ class HeroService
     public function __construct(EntityManagerInterface $em)
     {
         $this->_entityManager = $em;
-        $this->addHero(new hero('steve', 'rogers', false, 'captain america', 'le premier super hero americain et fondateur des avengers', ''));
-        $this->addHero(new hero('thor', 'Odinson', false, 'thor', 'thor dieux du tonners et fils d odin', ''));
-        $this->addHero(new hero('tony', 'stark', false, 'iron man', 'le milliardaire a l armure invincible', ''));
-        $this->addHero(new hero('bruce', 'banner', false, 'hulk', 'hulk le monstre vert déchainer', ''));
-        $this->addHero(new hero('natasha', 'romanoff', false, 'black widow', 'l espionne russe devenue agent du shield', ''));
-        $this->addHero(new hero('clinton', 'barton', false, 'Hawkeye', 'vif et précis rien échapes a son regard', ''));
-    }
+        $this->_listHero = $this->_entityManager->getRepository(Hero::class)->findAll();
+       
+        }
 
 
     public function getlist()

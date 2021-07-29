@@ -30,7 +30,7 @@ class Organisations extends ServiceEntityRepository
     private $city;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Hero::class, inversedBy="organisations")
+     * @ORM\ManyToMany(targetEntity=Hero::class, inversedBy="Organisations")
      */
     private $heroes;
     public function getId(): ?int

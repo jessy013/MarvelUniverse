@@ -52,7 +52,7 @@ class Hero
     /**
      * @ORM\ManyToMany(targetEntity=organisations::class, inversedBy="heroes")
      */
-    private $organisations;
+    private $Organisations;
 
     public function getId(): ?int
     {
@@ -138,30 +138,30 @@ class Hero
         $this-> pseudo = $pPseudo;
         $this->description = $pDescriptions;
         $this-> pictures = $pPictures;
-        $this->organisations = new ArrayCollection();
+        $this->Organisations = new ArrayCollection();
 
     }
 
     /**
-     * @return Collection|organisations[]
+     * @return Collection|Organisations[]
      */
     public function getOrganisations(): Collection
     {
-        return $this->organisations;
+        return $this->Organisations;
     }
 
-    public function addOrganisation(organisations $organisations): self
+    public function addOrganisation(Organisations $Organisations): self
     {
-        if (!$this->organisations->contains($organisations)) {
-            $this->organisations[] = $organisations;
+        if (!$this->Organisations->contains($Organisations)) {
+            $this->Organisations[] = $Organisations;
         }
 
         return $this;
     }
 
-    public function removeOrganisation(organisations $organisations): self
+    public function removeOrganisation(Organisations $Organisations): self
     {
-        $this->organisations->removeElement($organisations);
+        $this->Organisations->removeElement($Organisations);
 
         return $this;
     }

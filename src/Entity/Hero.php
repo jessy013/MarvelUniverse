@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\HeroRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -46,6 +48,11 @@ class Hero
      * @ORM\Column(type="string", length=255)
      */
     private $pseudo;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=organisations::class, inversedBy="heroes")
+     */
+    private $organisations;
 
     public function getId(): ?int
     {
@@ -131,7 +138,32 @@ class Hero
         $this-> pseudo = $pPseudo;
         $this->description = $pDescriptions;
         $this-> pictures = $pPictures;
+        $this->organisations = new ArrayCollection();
 
+    }
+
+    /**
+     * @return Collection|organisations[]
+     */
+    public function getOrganisations(): Collection
+    {
+        return $this->organisations;
+    }
+
+    public function addOrganisation(organisations $organisations): self
+    {
+        if (!$this->organisations->contains($organisations)) {
+            $this->organisations[] = $organisations;
+        }
+
+        return $this;
+    }
+
+    public function removeOrganisation(organisations $organisations): self
+    {
+        $this->organisations->removeElement($organisations);
+
+        return $this;
     }
 }
 
